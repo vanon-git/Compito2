@@ -1,0 +1,129 @@
+body{
+    background-color:#F5CBFF;
+    font-family: Century Gothic;
+    }
+    
+.header{
+    overflow: auto;
+    border-radius: 10px 10px 0px 0px;
+    width: 55%;
+    height:10%;
+    margin:auto;
+    text-align: center;
+    align-content: center;
+    background:	#00CD00;
+    }
+    
+.header1{
+    border-radius: 10px 10px 10px 10px;
+    width: 19.25%;
+    height:35%;
+    margin:auto;
+    text-align: center;
+    align-content: center;
+    background:#00EE76;
+    overflow: auto;
+    float:right;
+    }
+    
+.header2{
+    border-radius: 10px 10px 10px 10px;
+    width: 19.25%;
+    height:35%;
+    margin:auto;
+    text-align: center;
+    align-content: center;
+    background:#00EE76	;
+    overflow: auto;
+    float:left;
+    }
+    
+.center{
+    width: 55%;
+    height:35%;
+    overflow: auto;
+    margin:auto;
+    text-align: center;
+    align-content: center;
+    background:#00EE76;
+    }
+
+.footer{
+    border-radius: 0px 0px 10px 10px;
+    width: 55%;
+    height:10%;
+    overflow: auto;
+    margin:auto;
+    text-align:right;
+    align-content: center;
+    background:	#00CD00;
+
+    }
+    
+.img{
+    border-radius: 10px 10px 10px 10px;
+    margin:auto;
+    width: 49.2%;
+    height:49.2%;      
+    }
+    
+.img2{
+    border-radius: 50%;
+    margin:auto;
+    width: 8.5%;
+    height:8.5%;
+    float: right;   
+    }
+    
+h2{
+    font-family: Century Gothic;  
+  }
+
+.menu-link {
+    display:inline-block;
+    margin:auto;
+    overflow: auto;
+    text-align: center;
+    align-content: center;
+    background-color:lightgreen;
+    border:5px solid black; 
+    padding:10px;
+    width:175px ;
+    }
+    
+.menu-link:hover {
+    background-color: #51caf3;
+    color: #fff;
+    }
+    
+a:visited{
+    color: blue;
+    }
+a1:visited{
+  color:lightblue;
+}
+    
+p{
+
+    font-family: Century Gothic;
+    font-size:18px;
+    
+    }
+    
+.menu-link-a{
+    display:inline-block;
+    margin:auto;
+    overflow: auto;
+    text-align: center;
+    align-content: center;
+
+}
+.menu-link-b{
+    display:inline-block;
+    margin:auto;
+    overflow: auto;
+    text-align: center;
+    align-content: center;
+    
+
+}
