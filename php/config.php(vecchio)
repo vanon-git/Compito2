@@ -15,7 +15,6 @@ error_reporting(E_ALL &~E_NOTICE);
 $db_name = "pluto";
 $utenti = "utenti";
 $nft = "NFT";
-$gadget = "gadget";
 
 ///////////////////////////////////////////////////////////////////////////////
 // effettuazione della connessione al database
@@ -83,22 +82,6 @@ else {
     printf("Whoops! niente creazione Tabella movie! Che sara' successo??.\n");
   exit();
 }
-
-$sqlQuery = "CREATE TABLE if not exists $gadget (";
-$sqlQuery.= "gadgetId int NOT NULL auto_increment, primary key (gadgetId), ";
-$sqlQuery.= "nome varchar (100) NOT NULL, ";
-$sqlQuery.= "costoGadget float ";
-$sqlQuery.= ");";
-
-echo "<P>$sqlQuery</P>";
-
-if ($resultQ = mysqli_query($mysqliConnection, $sqlQuery))
-    printf("Tabella gadget creatA ...\n");
-else {
-    printf("Whoops! niente creazione Tabella gadget! Che sara' successo??.\n");
-  exit();
-}
-
 echo mysqli_errno($mysqliConnection);
 ///////////////////////////////////////////////////////////////////////////////
 

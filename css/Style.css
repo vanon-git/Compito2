@@ -68,13 +68,19 @@ body{
     }
     
 .img2{
-    border-radius: 50%;
+    border-radius: 10px 10px 10px 10px;
     margin:auto;
-    width: 8.5%;
-    height:8.5%;
+    width: 18.5%;
+    height:18.5%;
     float: right;   
     }
+.img3{
+      border-radius: 10px 10px 10px 10px;
+    margin:auto;
+    width: 18.5%;
+    height:18.5%;
     
+  }   
 h2{
     font-family: Century Gothic;  
   }
@@ -110,6 +116,32 @@ p{
     
     }
     
+.galleria {
+            display: flex;
+            font-family: Century Gothic;
+            overflow-x: auto;
+            margin-bottom: 20px;
+
+            
+}
+
+.immagine {
+            margin-right: 10px;
+            max-width: 200px;
+            
+}
+.lettere{
+  color:blue;
+  font-family: Century Gothic;;
+  
+}
+.immagine img{
+  width: 100%; /* Fai in modo che l'immagine riempia completamente il contenitore */
+            height: auto;
+}
+.preferiti {
+          margin-top: 10px;
+  } 
 .menu-link-a{
     display:inline-block;
     margin:auto;
@@ -126,4 +158,10 @@ p{
     align-content: center;
     
 
+}
+.div2{
+    align-content: center;
+  margin:auto;
+  text-align: center;
+  display:inline-block;
 }
