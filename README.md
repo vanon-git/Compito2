@@ -1,7 +1,46 @@
-# Homework su HTML-CSS
-In questo esercizio è stato sviluppato un sito Web su un argomento scelto a piacere, ovvero un progetto NFT chiamato Sappy Seals.
-Il sito è organizzato con un layout a 3 colonne uguale per ognuna delle 3 pagine presenti:
--La prima pagina è una sorta di home in cui viene spiegato il progetto in generale;
--La seconda pagina spiega brevemente cos'è un NFT;
--La terza pagina spiega brevemente cos'è la blockchain;
-Ognuna delle seguenti pagine fa riferimento ad un foglio di stile (Style.css) in cui sono presenti tutte le risorse necessarie al progetto.
+# Studente: Mattia Vanon
+
+# Link GitHub: https://github.com/vanon-git/Compito2
+
+# 
+
+# Descrizione del lavoro
+
+# Per questo secondo homework ho realizzato un piccolo sito di e-commerce per la vendita di NFT (i "Sappy Seals"). Il sito permette di registrarsi, fare il login, aggiungere prodotti al carrello e completare l'acquisto, gestendo tutto tramite sessioni PHP e database MySQL.
+
+# 
+
+# Per svolgerlo ho preso spunto dagli esercizi visti a lezione, in particolare:
+
+# 
+
+# Gli esercizi PHP-13 e PHP-14 per capire come gestire il carrello e come popolare il database tramite script.
+
+# 
+
+# L'esercizio PHP-15 per imparare a separare i file di connessione e includerli nelle varie pagine (come conn1.php e il menu).
+
+# 
+
+# L'esempio del carrello della spesa (Lezione 6) per la gestione della sessione utente.
+
+# 
+
+# Come farlo funzionare
+
+# Basta copiare la cartella del progetto dentro la cartella htdocs di XAMPP.
+
+# 
+
+# Nota sulle password del Database:
+
+# Se usate una password diversa per MySQL (di solito su XAMPP è vuota, ma su MAMP è "root"), dovete ricordarvi di cambiarla in due file:
+
+# 
+
+# conn1.php: È il file che il sito usa sempre per collegarsi al database e mostrare i prodotti.
+
+# 
+
+# install.php (o il file che usate per creare il DB): Questo serve solo all'inizio per creare il database e le tabelle la prima volta.
+

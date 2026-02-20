@@ -1,11 +1,11 @@
 <?php
-$db_name = "Compito2";
+    $db_name = "Compito2";
     //inizializzazione della connessione al database
-    $mysqliConnection = new mysqli("127.0.0.1", "root", "root");
+    $mysqliConnection = new mysqli("127.0.0.1", "root", "");
 
     //controllo della connessione
     if (mysqli_connect_errno()) {
-        printf("Problemi con la connessione al db: %s\n", mysqli_connect_error());
+        printf("Ci sono problemi con la connessione al Database: %s\n", mysqli_connect_error());
         exit();
     }
 
@@ -13,10 +13,10 @@ $db_name = "Compito2";
     $queryCreazioneDatabase = "CREATE DATABASE $db_name";
     // il risultato della query va in $resultQ
     if ($resultQ = mysqli_query($mysqliConnection, $queryCreazioneDatabase)) {
-        printf("Database creato ...\n");
+        printf("il Database è stato creato...\n");
     }
     else {
-        printf("Non è stato possibile creare il Db.\n");
+        printf("Non è stato possibile creare il Database.\n");
     //  exit();
     }
     
