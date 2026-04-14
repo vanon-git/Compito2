@@ -11,7 +11,7 @@
     }
 
     // collego il database
-    require_once("./conn1.php");
+    require_once("./connessione.php");
 
     // includo lo stile
     require_once("./stile_shop.php");
@@ -43,9 +43,7 @@
             $nuovoTotale = $_SESSION['daPagare'] + $_SESSION['totaleAcquisti'];
             
             // aggiorno il database con il nuovo totale speso dall'utente
-            $sql = "UPDATE $utenti
-                    SET totaleAcquisti = \"$nuovoTotale\" 
-                    WHERE username = \"{$_SESSION['username']}\"";
+            $sql = "UPDATE " . TBL_UTENTI . " SET totaleAcquisti = $nuovoTotale WHERE username = '$_SESSION[username]'";
             
             // eseguo l'aggiornamento
             if (!mysqli_query($mysqliConnection, $sql)) {

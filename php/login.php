@@ -10,7 +10,7 @@
     }
 
     /* Includo il file per connettermi al database */
-    require_once("./conn1.php");
+    require_once("./connessione.php");
 
     // Controllo se il form è stato inviato
     if (isset($_POST['invio'])){          
@@ -18,10 +18,7 @@
             echo "<p>Non hai inserito i dati,Riprova</p>";
         }else {
             // Cerco nel database se esiste un utente con questo username e password
-            $sql = "SELECT *
-                    FROM $utenti
-                    WHERE username = \"{$_POST['username']}\" AND password =\"{$_POST['password']}\"
-                    ";
+            $sql = "SELECT * FROM " . TBL_UTENTI . " WHERE username = '$_POST[username]' AND password = '$_POST[password]'";    
 
             // Eseguo la query
             if (!$resultQ = mysqli_query($mysqliConnection, $sql)) {

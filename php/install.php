@@ -1,117 +1,76 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php
+error_reporting(E_ALL);
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head><title>Creazione e Popolamento Compito2</title></head>
-        <body>
-            <h3>Creazione e Popolazione Compito2</h3>
-            <?php
-                error_reporting(E_ALL);
+// RICHIAMA SOLO CONNESSIONE, COME VOLEVI TU!
+require_once "connessione.php";
 
-                //Connessione al database e sua creazione
-                require_once("conn2.php");
+echo "<h3>Creazione e Popolazione Compito2</h3>";
 
-                //creazione tabelle
-                //creazione tabella Utenti
-                $sqlQuery = "CREATE TABLE if not exists $utenti (";
-                $sqlQuery.= "userId int NOT NULL auto_increment, primary key (userId), ";
-                $sqlQuery.= "nome varchar (50) NOT NULL, ";
-                $sqlQuery.= "cognome varchar (50) NOT NULL, ";
-                $sqlQuery.= "username varchar (50) NOT NULL UNIQUE, ";
-                $sqlQuery.= "password varchar (32) NOT NULL, ";
-                $sqlQuery.= "totaleAcquisti float";
-                $sqlQuery.= ");";
+// Facciamo pulizia delle tabelle vecchie per non sfasare mai le immagini
+mysqli_query($mysqliConnection, "DROP TABLE IF EXISTS " . TBL_IMMAGINI_NFT);
+mysqli_query($mysqliConnection, "DROP TABLE IF EXISTS " . TBL_NFT);
+mysqli_query($mysqliConnection, "DROP TABLE IF EXISTS " . TBL_UTENTI);
 
-                echo "<P>$sqlQuery</P>";
-                
-                //verifica creazione tabella Utenti
-                if ($resultQ = mysqli_query($mysqliConnection, $sqlQuery))
-                    printf("Tabella Utenti creata ...\n");
-                else {
-                    printf("Errore nella creazione della tabella Utenti.\n");
-                exit();
-                }
-                //creazione tabella nft
-                $sqlQuery = "CREATE TABLE if not exists $nft (";
-                $sqlQuery.= "nftId int NOT NULL auto_increment, primary key (nftId), ";
-                $sqlQuery.= "nome varchar (100) NOT NULL, ";
-                $sqlQuery.= "costoNft float";
-                $sqlQuery.= ");";
+// Creazione tabella Utenti
+$sqlQuery = "CREATE TABLE IF NOT EXISTS " . TBL_UTENTI . " (
+    userId INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    cognome VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(32) NOT NULL,
+    totaleAcquisti FLOAT,
+    PRIMARY KEY (userId)
+)";
+if (mysqli_query($mysqliConnection, $sqlQuery)) {
+    echo "Tabella utenti creata...<br>";
+}
 
-                echo "<P>$sqlQuery</P>";
+// Creazione tabella NFT (Senza AUTO_INCREMENT per forzare gli ID 1,2,3,4,5,6 e allineare le foto)
+$sqlQuery = "CREATE TABLE IF NOT EXISTS " . TBL_NFT . " (
+    nftId INT NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    costoNft FLOAT
+)";
+if (mysqli_query($mysqliConnection, $sqlQuery)) {
+    echo "Tabella nft creata...<br>";
+}
 
-                if ($resultQ = mysqli_query($mysqliConnection, $sqlQuery))
-                    printf("Tabella nft creatA ...\n");
-                else {
-                    printf("Whoops! niente creazione Tabella movie! Che sara' successo??.\n");
-                exit();
-                }
-                // creazione tabella immagini_nft
-                $sqlQuery = "CREATE TABLE if not exists $immagini_nft (";
-                $sqlQuery.= "imgId int NOT NULL auto_increment, primary key (imgId), ";
-                $sqlQuery.= "nftId int NOT NULL, "; // Chiave esterna
-                $sqlQuery.= "percorso_file varchar (255) NOT NULL, ";
-                $sqlQuery.= "FOREIGN KEY (nftId) REFERENCES $nft(nftId) ON DELETE CASCADE";
-                $sqlQuery.= ");";
+// Creazione tabella Immagini NFT
+$sqlQuery = "CREATE TABLE IF NOT EXISTS " . TBL_IMMAGINI_NFT . " (
+    imgId INT NOT NULL AUTO_INCREMENT,
+    nftId INT NOT NULL,
+    percorsofile VARCHAR(255) NOT NULL,
+    PRIMARY KEY (imgId),
+    FOREIGN KEY (nftId) REFERENCES " . TBL_NFT . "(nftId) ON DELETE CASCADE
+)";
+if (mysqli_query($mysqliConnection, $sqlQuery)) {
+    echo "Tabella immagininft creata...<br>";
+}
 
-                echo "<P>$sqlQuery</P>";
+// --- POPOLAMENTO ---
 
-                if ($resultQ = mysqli_query($mysqliConnection, $sqlQuery))
-                    printf("Tabella immagini_nft creata ...<br>");
-                else {
-                    printf("Errore creazione tabella immagini_nft.<br>");
-                    echo mysqli_error($mysqliConnection);
-                    exit();
-                }
-                echo mysqli_errno($mysqliConnection);
-                //popolamento tabelle
-                //popolamento Utenti (NB: userId gestito automaticamente)
-                $sql = "INSERT INTO $utenti
-                    (nome, cognome, username, password, totaleAcquisti)
-                    VALUES
-                    (\"Mattia\", \"Vanon\", \"admin\", \"1234\", \"0\")
-                    ";
+$sql = "INSERT INTO " . TBL_UTENTI . " (nome, cognome, username, password, totaleAcquisti) 
+        VALUES ('Mattia', 'Vanon', 'admin', '1234', 0)";
+mysqli_query($mysqliConnection, $sql);
 
-                if ($resultQ = mysqli_query($mysqliConnection, $sql))
-                    printf("Utente inserito correttamente <br />\n");
-                else {
-                    printf("Errore inserimento utente <br />\n");
-                exit();
-                }
-                $sql = "INSERT INTO $nft (nome, costoNft) VALUES 
-                    (\"SappySeals6589\", 247.00),
-                    (\"SappySeals8569\", 245.99),
-                    (\"SappySeals2546\", 458.50),
-                    (\"SappySeals4598\", 1478.99),
-                    (\"SappySeals1456\", 85.50),
-                    (\"SappySeals4587\", 412.99)";
+$sql = "INSERT INTO " . TBL_NFT . " (nftId, nome, costoNft) VALUES
+        (1, 'SappySeals6589', 247.00),
+        (2, 'SappySeals8569', 245.99),
+        (3, 'SappySeals2546', 458.50),
+        (4, 'SappySeals4598', 1478.99),
+        (5, 'SappySeals1456', 85.50),
+        (6, 'SappySeals4587', 412.99)";
+mysqli_query($mysqliConnection, $sql);
 
-                if ($resultQ = mysqli_query($mysqliConnection, $sql)){
-                printf("nft inserito correttamente <br />\n");}
-                else {
-                printf("Errore inserimento nft <br />\n");
-                exit();
-                }
-                // --- POPOLAMENTO IMMAGINI ---
-                // Immagini per l'NFT 1 (SappySeals)
-                $sqlImg = "INSERT INTO $immagini_nft (nftId, percorso_file) VALUES 
-                        (1, \"../imgdb/imgcostosa1.png\"),
-                        (2, \"../imgdb/imgcostosa5.png\"), 
-                        (3, \"../imgdb/imgcostosa9.png\"),
-                        (4, \"../imgdb/imgrara3.jpg\"),
-                        (5, \"../imgdb/imgrara7.jpg\"), 
-                        (6, \"../imgdb/imgrara8.jpg\")"; 
-                    // Una sola immagine per il secondo
-                if (mysqli_query($mysqliConnection, $sqlImg)) {
-                    printf("Immagini collegate correttamente agli NFT.<br>");
-                } else {
-                    printf("Errore inserimento immagini: " . mysqli_error($mysqliConnection) . "<br>");
-                }
-                //chiudiamo la connessione
-                $mysqliConnection->close();
+$sqlImg = "INSERT INTO " . TBL_IMMAGINI_NFT . " (nftId, percorsofile) VALUES
+          (1, '../imgCarr/imgcostosa1.png'),
+          (2, '../imgCarr/imgcostosa5.png'),
+          (3, '../imgCarr/imgcostosa9.png'),
+          (4, '../imgCarr/imgrara3.jpg'),
+          (5, '../imgCarr/imgrara7.jpg'),
+          (6, '../imgCarr/imgrara8.jpg')";
+mysqli_query($mysqliConnection, $sqlImg);
 
-        ?>
-    </body>
-</html>
+echo "<br><strong>Tutto completato perfettamente!</strong>";
+$mysqliConnection->close();
+?>

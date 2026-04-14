@@ -6,7 +6,7 @@
         header('Location: login.php');
 
     // collego il database e il file di stile
-    require_once("./conn1.php");
+    require_once("./connessione.php");
     require_once("./stile_shop.php");
 
     // preparo le variabili per il totale e la lista degli NFT
@@ -22,11 +22,7 @@
             $nomeSafe = mysqli_real_escape_string($mysqliConnection, $nome);
 
             // cerco i dati dell'NFT e la sua immagine unendo le tabelle
-            $sql = "SELECT n.nome, n.costoNft, i.percorso_file 
-                    FROM nft AS n 
-                    LEFT JOIN immagini_nft AS i ON n.nftId = i.nftId
-                    WHERE n.nome = '$nomeSafe'
-                    LIMIT 1"; 
+            $sql = "SELECT n.nome, n.costoNft, i.percorsofile FROM " . TBL_NFT . " AS n LEFT JOIN " . TBL_IMMAGINI_NFT . " AS i ON n.nftId = i.nftId WHERE n.nome = '$nomeSafe' LIMIT 1";
             
             // eseguo la query
             if (!$resultQ = mysqli_query($mysqliConnection, $sql)) {
@@ -36,18 +32,17 @@
             
             // se trovo il prodotto
             if ($row = mysqli_fetch_array($resultQ)) {
-                
                 // aggiungo il prezzo al totale
                 $_SESSION['daPagare'] += $row['costoNft'];
                 
                 // se c'è un'immagine la uso, altrimenti ne metto una bianca standard
-                $imgTrovata = (!empty($row['percorso_file'])) ? $row['percorso_file'] : "bianco.jpg";
-
+                $imgTrovata = (!empty($row['percorsofile'])) ? $row['percorsofile'] : "bianco.jpg";
+                
                 // salvo i dati in un array per stamparli dopo nell'HTML
                 $ListaNft[] = array(
-                    'nome'     => $row['nome'],
-                    'prezzo'   => $row['costoNft'],
-                    'immagine' => $imgTrovata 
+                    "nome" => $row['nome'],
+                    "prezzo" => $row['costoNft'],
+                    "immagine" => $imgTrovata
                 );
             }
         }

@@ -3,7 +3,7 @@
     error_reporting(E_ALL);
     
     // includo il file con i parametri di connessione
-    require_once("./conn1.php");
+    require_once("./connessione.php");
 
     // se è stato premuto il tasto invio
     if(isset($_POST['invio'])) {
@@ -12,10 +12,7 @@
         if(($_POST['nome']) && ($_POST['cognome']) && ($_POST['username']) && ($_POST['password']) ) {
         
             // preparo la query per vedere se l'username è già presente nel db
-            $sql = "SELECT *
-            FROM $utenti
-            WHERE username = \"{$_POST['username']}\"
-            ";
+            $sql = "SELECT * FROM " . TBL_UTENTI . " WHERE username = '$_POST[username]'";
                 
             // eseguo la query e controllo se ci sono errori
             if (!$resultQ = mysqli_query($mysqliConnection, $sql)) {
@@ -31,11 +28,8 @@
             }else{
                 
                 // inserisco il nuovo utente nel database
-                $sql = "INSERT INTO $utenti
-                (nome, cognome, username, password, totaleAcquisti)
-                VALUES
-                ('{$_POST['nome']}', '{$_POST['cognome']}','{$_POST['username']}','{$_POST['password']}', \"0\")
-                ";
+                $sql = "INSERT INTO " . TBL_UTENTI . " (nome, cognome, username, password, totaleAcquisti) 
+                VALUES ('$_POST[nome]', '$_POST[cognome]','$_POST[username]','$_POST[password]', 0)";
 
                 // eseguo l'inserimento e verifico che sia andato a buon fine
                 if(!($resultQ = mysqli_query($mysqliConnection, $sql))) {

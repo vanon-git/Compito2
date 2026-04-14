@@ -8,7 +8,7 @@
     if (!isset($_SESSION['accessoPermesso']))
         header('Location: login.php');
     
-    require_once("./conn1.php");
+    require_once("./connessione.php");
     require_once("./stile_shop.php");
 
     // variabile per stampare messaggi di conferma
@@ -104,10 +104,7 @@
                                         $nomeSafe = mysqli_real_escape_string($mysqliConnection, $nomeProdotto);
                                         
                                         // cerco i dettagli (prezzo e immagine) di questo prodotto specifico
-                                        $sqlSingolo = "SELECT n.costoNft, i.percorso_file 
-                                                       FROM nft AS n 
-                                                       LEFT JOIN immagini_nft AS i ON n.nftId = i.nftId 
-                                                       WHERE n.nome = '$nomeSafe' LIMIT 1";
+                                        $sqlSingolo = "SELECT n.nome, n.costoNft, i.percorsofile FROM " . TBL_NFT . " AS n LEFT JOIN " . TBL_IMMAGINI_NFT . " AS i ON n.nftId = i.nftId WHERE n.nome = '$nomeSafe' LIMIT 1";
                                         
                                         $resultSingolo = mysqli_query($mysqliConnection, $sqlSingolo);
                                         $datiProdotto = mysqli_fetch_array($resultSingolo);
@@ -116,9 +113,10 @@
                                         $prezzoCorrente = isset($datiProdotto['costoNft']) ? $datiProdotto['costoNft'] : "0.00";
                                         
                                         // controllo se c'è l'immagine
+                                        // controllo se c'è l'immagine
                                         $immagineCorrente = "bianco.jpg"; // immagine standard
-                                        if (isset($datiProdotto['percorso_file']) && !empty($datiProdotto['percorso_file'])) {
-                                            $immagineCorrente = $datiProdotto['percorso_file'];
+                                        if (isset($datiProdotto['percorsofile']) && !empty($datiProdotto['percorsofile'])) {
+                                            $immagineCorrente = $datiProdotto['percorsofile'];
                                         }
                                 ?>
                                     

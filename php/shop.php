@@ -9,15 +9,13 @@
         header('Location: login.php');
 
     // collego il database
-    require_once("./conn1.php");
+    require_once("./connessione.php");
 
     // includo il file con lo stile css
     require_once("./stile_shop.php");
     
     // query per prendere i prodotti e le relative immagini (usando LEFT JOIN per non perdere prodotti senza foto)
-    $sql="SELECT n.nome, n.costoNft, i.percorso_file 
-          FROM nft AS n 
-          LEFT JOIN immagini_nft AS i ON n.nftId = i.nftId";
+    $sql="SELECT n.nome, n.costoNft, i.percorsofile FROM " . TBL_NFT . " AS n LEFT JOIN " . TBL_IMMAGINI_NFT . " AS i ON n.nftId = i.nftId";
 
     // eseguo la query e controllo errori
     if (!$resultQ = mysqli_query($mysqliConnection, $sql)) {
@@ -91,22 +89,22 @@
             <div class="container-meraviglie">
                 <?php
                     // scorro tutti i risultati trovati nel database
-                    while ($row = mysqli_fetch_array($resultQ)){
-                        
-                        $nome = $row['nome'];
-                        $prezzo = $row['costoNft'];
+            while ($row = mysqli_fetch_array($resultQ)){
+                                    
+                $nome = $row['nome'];
+                $prezzo = $row['costoNft'];
 
-                        // controllo se il database mi ha dato un percorso immagine valido
-                        if (isset($row['percorso_file']) && !empty($row['percorso_file'])) {
-                            $immagine = $row['percorso_file'];
-                        } else {
-                            // se non c'è immagine nel db, controllo se c'è nell'array vecchio o uso quella di default
-                             if(isset($immagini[$nome])) {
-                                 $immagine = $immagini[$nome];
-                             } else {
-                                 $immagine = "bianco.jpg";   // immagine vuota standard
-                             }
-                        }
+                // controllo se il database mi ha dato un percorso immagine valido
+                if (isset($row['percorsofile']) && !empty($row['percorsofile'])) {
+                    $immagine = $row['percorsofile'];
+                } else {
+                    // se non c'è immagine nel db, controllo se c'è nell'array vecchio o uso quella di default
+                    if(isset($immagini[$nome])) {
+                        $immagine = $immagini[$nome];
+                    } else {
+                        $immagine = "bianco.jpg";   // immagine vuota standard
+                    }
+                }
                 ?>      
                         <!-- scheda del singolo prodotto -->
                         <div class="scheda-meraviglia">
