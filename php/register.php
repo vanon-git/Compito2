@@ -28,8 +28,8 @@
             }else{
                 
                 // inserisco il nuovo utente nel database
-                $sql = "INSERT INTO " . TBL_UTENTI . " (nome, cognome, username, password, totaleAcquisti) 
-                VALUES ('$_POST[nome]', '$_POST[cognome]','$_POST[username]','$_POST[password]', 0)";
+                $sql = "INSERT INTO " . TBL_UTENTI . " (nome, cognome, username, password, totaleAcquisti, ruolo) 
+                VALUES ('$_POST[nome]', '$_POST[cognome]','$_POST[username]','$_POST[password]', 0 , 'user')";
 
                 // eseguo l'inserimento e verifico che sia andato a buon fine
                 if(!($resultQ = mysqli_query($mysqliConnection, $sql))) {

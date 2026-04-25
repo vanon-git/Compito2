@@ -35,6 +35,7 @@
                 $_SESSION['cognome']=$row['cognome'];
                 $_SESSION['username']=$_POST['username'];
                 $_SESSION['totaleAcquisti']=$row['totaleAcquisti'];
+                $_SESSION['ruolo'] = $row['ruolo'];
                 $_SESSION['dataLogin']=time();
                 $_SESSION['accessoPermesso']=1000;
                 header('Location: shop.php');    // Rimando l'utente alla pagina dello shop

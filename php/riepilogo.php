@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     // se non ho il permesso di accesso, rimando al login
     if (!isset($_SESSION['accessoPermesso']))
         header('Location: login.php');

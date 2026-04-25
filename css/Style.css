@@ -4,14 +4,20 @@ body {
     background-color: #e2e8f0; 
     font-family: 'Outfit', Arial, sans-serif;
     color: #1e293b; 
+    margin: 0;
+    font-size: 15px;
+    
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
 }
 
-/* Intestazione principale in alto */
+/* Header principale */
 .header {
     overflow: auto;
     border-radius: 10px 10px 0px 0px;
     width: 55%;
-    height: 10%;
+    padding: 15px 0;
     margin: auto;
     text-align: center;
     align-content: center;
@@ -20,73 +26,88 @@ body {
     color: #ffffff; 
 }
 
+.header h1 {
+    margin: 0 0 10px 0;
+}
+
 /* Colonna laterale destra */
 .header1 {
     border-radius: 10px 10px 10px 10px;
     width: 19.25%;
-    height: 35%;
+    height: auto; 
+    min-height: 65vh;
     margin: auto;
     text-align: center;
     align-content: center;
     background: #ffffff; 
-    overflow: auto;
+    overflow: hidden; 
     float: right;
     border: 1px solid #cbd5e1; 
+    padding-bottom: 15px; 
 }
 
 /* Colonna laterale sinistra */
 .header2 {
     border-radius: 10px 10px 10px 10px;
     width: 19.25%;
-    height: 35%;
+    height: auto; 
+    min-height: 65vh;
     margin: auto;
     text-align: center;
     align-content: center;
     background: #ffffff; 
-    overflow: auto;
+    overflow: hidden; 
     float: left;
     border: 1px solid #cbd5e1;
+    padding-bottom: 15px; 
 }
 
 /* Blocco centrale */
 .center {
     width: 55%;
-    height: 35%;
-    overflow: auto;
+    height: auto; 
+    min-height: 65vh;
     margin: auto;
     text-align: center;
     align-content: center; 
     background: #ffffff; 
     border: 1px solid #cbd5e1;
+    overflow: hidden; 
+    padding: 15px 0; 
 }
 
-/* Footer a fondo pagina */
+/* Footer */
 .footer {
     border-radius: 0px 0px 10px 10px;
     width: 55%;
-    height: 10%;
+    padding: 15px 0; 
     overflow: auto;
-    margin: auto;
     text-align: right;
     align-content: center;
     background: #0f172a; 
     border-top: 4px solid #3b82f6; 
     color: #94a3b8; 
+    
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-/* Stile per le immagini grandi */
+/* Immagini grandi */
 .img {
     display: inline-block; 
-    vertical-align: top;   
-    margin: 1%;            
-    width: 46%;            
-    height: 45%;           
+    vertical-align: top;    
+    margin: 1%;             
+    width: 45%; 
+    height: 21.5%;
+    max-height: 400px;
     border-radius: 6px;
     border: 1px solid #e2e8f0;
     object-fit: cover;     
 }
 
-/* Stile per le immagini piccole laterali (destra) */
+/* Immagini piccole laterali (destra) */
 .img2 {
     border-radius: 6px;
     margin: auto;
@@ -94,15 +115,17 @@ body {
     height: 18.5%;
     float: right;
     border: 1px solid #e2e8f0;
+    object-fit: cover;
 }
 
-/* Stile per le immagini piccole laterali (standard) */
+/* Immagini piccole laterali */
 .img3 {
     border-radius: 6px;
     margin: auto;
     width: 18.5%;
     height: 18.5%;
     border: 1px solid #e2e8f0;
+    object-fit: cover;
 }
 
 h2 {
@@ -111,31 +134,33 @@ h2 {
     text-transform: uppercase;
 }
 
-/* --- BOTTONI MENU MODIFICATI --- */
+/* Bottoni menu */
 .menu-link, .menu-link-a, .menu-link-b {
     display: inline-block;
-    margin: auto;
+    vertical-align: middle; 
+    margin: 4px 6px; 
     text-align: center;
     background-color: #ffffff; 
     border: 2px solid #3b82f6; 
     color: #3b82f6; 
-    width: 175px;
+    width: 150px; 
+    height: 40px; 
+    line-height: 36px; 
     border-radius: 6px;
     font-weight: bold;
     text-transform: uppercase;
     transition: 0.2s; 
-    padding: 0; /* Tolto il padding da qui */
-    overflow: hidden; /* Assicura che il link rispetti i bordi tondi */
+    padding: 0; 
+    overflow: hidden; 
 }
 
-/* NUOVO: Stile per il link (la scritta cliccabile) */
 .menu-link a, .menu-link-a a, .menu-link-b a {
-    display: block;      /* Occupa tutto lo spazio del bottone */
-    padding: 10px;       /* Il padding va qui per rendere cliccabile l'area */
+    display: block;      
+    padding: 0; 
     width: 100%;         
     height: 100%;
     text-decoration: none;
-    color: inherit;      /* Prende il colore dal contenitore */
+    color: inherit;      
     box-sizing: border-box;
 }
 
@@ -145,7 +170,6 @@ h2 {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
     cursor: pointer;
 }
-/* -------------------------------- */
 
 a:visited { color: #64748b; }
 a1:visited { color: #64748b; }
@@ -154,6 +178,7 @@ p {
     font-family: 'Outfit', sans-serif;
     font-size: 18px;
     color: #334155; 
+    padding: 0 10px;
 }
 
 /* Galleria */

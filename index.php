@@ -1,13 +1,16 @@
+<?php
+session_start();
+?>
 <?xml version = "1.0"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//IT"
+<!DOCTYPE php PUBLIC "-//W3C//DTD XHTML 1.0 Strict//IT"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
        
 
-<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<php  xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
     
        <head>
             <title>Homework1-2/3</title>
-            <link rel="stylesheet" href="./css/Style.css" type="text/css" />
+            <link rel="stylesheet" href="./css/Style.css?ts=<?php echo time(); ?>" type="text/css" />
 
 
        </head>
@@ -45,19 +48,23 @@
               </div>
               
               <div class="header">
-                     <ul>
-                     <h1>Sappy Seals NFT</h1>
-                     <li class="menu-link-a"><a href="./php/login.php"><Strong>Login</Strong></a></li>
-                     <li class="menu-link-a"><a href="./php/logout.php"><Strong>Logout</Strong></a></li>
-                     <li class="menu-link-a"><a href="./php/register.php"><Strong>Registrazione</Strong></a></li>
-                     </ul>
+              <ul>
+              <h1>Sappy Seals NFT</h1>
+
+              <?php if (isset($_SESSION['accessoPermesso'])) { ?>
+                     <li class="menu-link-a"><a href="./php/logout.php"><strong>Logout</strong></a></li>
+              <?php } else { ?>
+                     <li class="menu-link-a"><a href="./php/login.php"><strong>Login</strong></a></li>
+                     <li class="menu-link-a"><a href="./php/register.php"><strong>Registrazione</strong></a></li>
+              <?php } ?>
+              </ul>
               </div>
               <div  class="center">
                      <ul>
-                     <li class="menu-link"><a href='./index.html'><strong>HOME</strong></a></li>
-                     <li class="menu-link"><a href='./file/NFT.html'><strong>Cos'&egrave un NFT?</strong></a></li>
-                     <li class="menu-link"><a href='./file/Blockchain.html'><strong>Cos'&egrave la blockchain?</strong></a></li>
-                     <li class="menu-link"><a href='./File/cart.php'><strong>shop</strong></a></li>
+                     <li class="menu-link"><a href='./index.php'><strong>HOME</strong></a></li>
+                     <li class="menu-link"><a href='./file/NFT.php'><strong>Cos'&egrave un NFT?</strong></a></li>
+                     <li class="menu-link"><a href='./file/Blockchain.php'><strong>Blockchain</strong></a></li>
+                     <li class="menu-link"><a href='./php/shop.php'><strong>shop</strong></a></li>
                      </ul>
                      <h1><em>Progetto Sappy Seals</em></h1>
                      <p>
@@ -97,5 +104,5 @@
 
        </body>
 
-</html>
+</php>
 

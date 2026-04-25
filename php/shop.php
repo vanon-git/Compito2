@@ -3,7 +3,6 @@
     error_reporting(E_ALL);
 
     session_start();
-
     // controllo se l'utente è loggato, altrimenti lo rimando al login
     if (!isset($_SESSION['accessoPermesso']))
         header('Location: login.php');
@@ -107,7 +106,7 @@
                 }
                 ?>      
                         <!-- scheda del singolo prodotto -->
-                        <div class="scheda-meraviglia">
+                        <div class="scheda-Nft">
                             <img src="<?php echo $immagine; ?>" alt="<?php echo htmlspecialchars($nome); ?>" />
                             <div class="contenuto-scheda">
                                 <div class="titolo-scheda"><?php echo $nome; ?></div>

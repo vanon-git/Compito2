@@ -54,20 +54,15 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
               
               <!-- Intestazione in alto con i bottoni login e logout -->
               <div class="header">
-                     <ul>
-                     <h1>Sappy Seals NFT</h1>
-                     <li class="menu-link-a"><a href="../php/login.php"><Strong>Login</Strong></a></li>
-                     <li class="menu-link-b"><a href="../php/logout.php"><Strong>Logout</Strong></a></li>
-                     </ul>
               </div>
 
               <!-- Parte centrale con il menu e il messaggio di saluto -->
               <div  class="center">
                      <ul>
-                     <li class="menu-link"><a href='../index.html'><strong>HOME</strong></a></li>
-                     <li class="menu-link"><a href='../file/NFT.html'><strong>Cos'&egrave un NFT?</strong></a></li>
-                     <li class="menu-link"><a href='../file/Blockchain.html'><strong>Cos'&egrave la blockchain?</strong></a></li>
-                     <li class="menu-link"><a href='../php/shop.php'><strong>Carrello</strong></a></li>
+                     <li class="menu-link"><a href='../index.php'><strong>HOME</strong></a></li>
+                     <li class="menu-link"><a href='../file/NFT.php'><strong>Cos'&egrave un NFT?</strong></a></li>
+                     <li class="menu-link"><a href='../file/Blockchain.php'><strong>Blockchain</strong></a></li>
+                     <li class="menu-link"><a href='../php/shop.php'><strong>Shop</strong></a></li>
                      </ul>
               <div class="stile-logout">
                      <h1><em><Strong>Logout effettuato con successo </Strong></em></h1>
@@ -76,7 +71,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                 <a href="login.php" >Torna al Login</a>
             </div>
               <div class="menu-link">
-                <a href="../index.html" >Vai alla Home</a>
+                <a href="../index.php" >Vai alla Home</a>
             </div>
         </div>
 

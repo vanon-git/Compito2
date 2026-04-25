@@ -19,6 +19,7 @@ $sqlQuery = "CREATE TABLE IF NOT EXISTS " . TBL_UTENTI . " (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(32) NOT NULL,
     totaleAcquisti FLOAT,
+    ruolo VARCHAR(20) NOT NULL DEFAULT 'user',
     PRIMARY KEY (userId)
 )";
 if (mysqli_query($mysqliConnection, $sqlQuery)) {
@@ -49,8 +50,8 @@ if (mysqli_query($mysqliConnection, $sqlQuery)) {
 
 // --- POPOLAMENTO ---
 
-$sql = "INSERT INTO " . TBL_UTENTI . " (nome, cognome, username, password, totaleAcquisti) 
-        VALUES ('Mattia', 'Vanon', 'admin', '1234', 0)";
+$sql = "INSERT INTO " . TBL_UTENTI . " (nome, cognome, username, password, totaleAcquisti, ruolo) 
+        VALUES ('Mattia', 'Vanon', 'admin', '1234', 0 , 'admin')";
 mysqli_query($mysqliConnection, $sql);
 
 $sql = "INSERT INTO " . TBL_NFT . " (nftId, nome, costoNft) VALUES
